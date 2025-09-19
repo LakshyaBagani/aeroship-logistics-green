@@ -7,7 +7,7 @@ import windImg from "@/assets/renewable-hero.jpg";
 import hydroImg from "@/assets/hydro.png";
 import evImg from "@/assets/evs.png";
 import solarBuildingImg from "@/assets/solarBuildeing.png";
-import windMillImg from "@/assets/windMill.png";
+import windMillImg from "@/assets/mill.png";
 import windEnergyImg from "@/assets/windEnergy.png";
 import hydroElectricityImg from "@/assets/hydroElectricity.png";
 import SectionBadge from "@/components/ui/SectionBadge";
