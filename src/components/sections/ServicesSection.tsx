@@ -1,136 +1,114 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Plane, 
-  Ship, 
-  Truck, 
-  Train, 
-  Shield, 
-  FileText, 
-  Warehouse, 
-  MonitorPlay 
-} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { useInView } from "@/hooks/use-in-view";
+import RenewableEnergySection from "./RenewableEnergySection";
+import airImg from "@/assets/air.png";
+import oceanImg from "@/assets/ocean.png";
+import bulkCargoImg from "@/assets/bulkCargo.png";
+import projectImg from "@/assets/project.png";
+import transportImg from "@/assets/transport.png";
+import customImg from "@/assets/custom.png";
 
-const services = [
+type ServiceItem = {
+  title: string;
+  description: string;
+  image: string;
+};
+
+const services: ServiceItem[] = [
   {
-    icon: Ship,
-    title: "Direct Vessels Port-to-Port",
-    description: "Live vessel tracking on daily basis with real-time updates and monitoring",
-    color: "text-blue-600"
+    title: "Air Freight",
+    description:
+      "Polar Bear is the fastest growing air freight forwarding specialist in China, Middle East and USA besides covering all the major airports worldwide.",
+    image: airImg,
   },
   {
-    icon: Shield,
-    title: "Cargo Marine Policy",
-    description: "Comprehensive insurance coverage for your valuable shipments worldwide",
-    color: "text-green-600"
+    title: "Ocean Freight",
+    description:
+      "Aeroship Logistics to deliver the most flexible sea freight services through its network of agents, carriers.",
+    image: oceanImg,
   },
   {
-    icon: FileText,
-    title: "Custom Clearance Services",
-    description: "Door to Door customs clearance with expert documentation handling",
-    color: "text-purple-600"
+    title: "Break Bulk Cargo",
+    description:
+      "Cargo that is too big or too heavy to be loaded onto a flat rack container can be loaded directly onto the vessel. These are known as Break Bulk Cargo.",
+    image: bulkCargoImg,
   },
   {
-    icon: Train,
-    title: "Urgent Railment Facility",
-    description: "Fast rail transport from ports to ICDs with dedicated railway connections",
-    color: "text-red-600"
+    title: "Project Logistics",
+    description:
+      "Aeroship Logistics uses the most efficient methods available for transportation and order fulfillment and coupled with our many years of experience, we can be a single-source solution to meet your total logistics and distribution needs.",
+    image: projectImg,
   },
   {
-    icon: Warehouse,
-    title: "Warehousing & Transportation",
-    description: "Smart monitoring systems for storage and distribution management",
-    color: "text-orange-600"
+    title: "Transportation",
+    description:
+      "The Challenge for Aeroship Logistics is to minimize costs, improve transport efficiencies, overcome trade, technical and paper barriers and apply improving technologies to ensure completion of project requirements in the time allotted.",
+    image: transportImg,
   },
   {
-    icon: MonitorPlay,
-    title: "Multi-Modal Freight Management",
-    description: "Air, Sea, Road, and Rail freight solutions with integrated tracking",
-    color: "text-indigo-600"
-  }
+    title: "Custom Clearance",
+    description:
+      "Since Aeroship Logistics inception, we have been growing day by day as a trustworthy and popular Custom Broking Agents, offering world class Custom Clearing Services from India.",
+    image: customImg,
+  },
 ];
 
 export default function ServicesSection() {
+  const header = useInView<HTMLDivElement>({ threshold: 0.2 });
+  const grid = useInView<HTMLDivElement>({ threshold: 0.15 });
+
   return (
-    <section className="py-16 bg-background">
-      <div className="container mx-auto px-4">
+    <>
+      
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div
+          ref={header.ref}
+          className={`text-center mb-12 reveal-up ${header.isInView ? "reveal-in" : ""}`}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our Logistics Services
+            Our Services
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive freight solutions designed to meet your global shipping needs
-            with efficiency, reliability, and advanced tracking technology.
+            Six core offerings tailored to your freight needs, delivered with quality
+            and a modern, eco-conscious design.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
-            const IconComponent = service.icon;
-            return (
-              <Card 
-                key={index} 
-                className="group hover:shadow-elegant transition-smooth hover:-translate-y-2 border-0 glass"
-              >
-                <CardHeader className="pb-4">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-primary-foreground" />
-                    </div>
-                    <div className="w-1 h-8 bg-gradient-to-b from-primary to-success rounded-full"></div>
-                  </div>
-                  <CardTitle className="text-xl text-foreground group-hover:text-primary transition-smooth">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
-                  
-                  {/* Service Features */}
-                  <div className="mt-4 flex items-center space-x-2">
-                    <div className="flex space-x-1">
-                      {[1, 2, 3].map((dot) => (
-                        <div 
-                          key={dot} 
-                          className="w-2 h-2 rounded-full bg-success opacity-60"
-                        ></div>
-                      ))}
-                    </div>
-                    <span className="text-xs text-muted-foreground">24/7 Support</span>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+        {/* Services Grid (6 only) */}
+        <div
+          ref={grid.ref}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-0 reveal-stagger ${grid.isInView ? "reveal-in" : ""}`}
+        >
+          {services.map((service, index) => (
+            <Card
+              key={service.title}
+              className="group overflow-hidden rounded-xl border bg-card shadow-md hover:-translate-y-2 hover:shadow-xl transition-smooth reveal-item mx-auto w-[95%] md:w-[88%]"
+              style={{ transitionDelay: `${index * 120}ms` }}
+            >
+              <div className="relative overflow-hidden h-60 md:h-72 bg-white w-full">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-smooth duration-300 ease-out group-hover:scale-[1.03] brightness-105 contrast-110 select-none pointer-events-none"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-
-        {/* Additional Service Features */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="text-center">
-            <Plane className="w-8 h-8 mx-auto mb-3 text-primary" />
-            <h4 className="font-semibold text-foreground mb-2">Air Freight</h4>
-            <p className="text-sm text-muted-foreground">Express air cargo services</p>
-          </div>
-          <div className="text-center">
-            <Ship className="w-8 h-8 mx-auto mb-3 text-primary" />
-            <h4 className="font-semibold text-foreground mb-2">Sea Freight</h4>
-            <p className="text-sm text-muted-foreground">Ocean freight solutions</p>
-          </div>
-          <div className="text-center">
-            <Truck className="w-8 h-8 mx-auto mb-3 text-primary" />
-            <h4 className="font-semibold text-foreground mb-2">Road Transport</h4>
-            <p className="text-sm text-muted-foreground">Land transportation network</p>
-          </div>
-          <div className="text-center">
-            <Train className="w-8 h-8 mx-auto mb-3 text-primary" />
-            <h4 className="font-semibold text-foreground mb-2">Rail Freight</h4>
-            <p className="text-sm text-muted-foreground">Railway cargo services</p>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

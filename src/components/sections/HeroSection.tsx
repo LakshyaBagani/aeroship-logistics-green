@@ -1,43 +1,44 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Globe, Users, Award } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import logisticsHero from "@/assets/logistics-hero.jpg";
+import { useInView } from "@/hooks/use-in-view";
 
 export default function HeroSection() {
+  const heroContent = useInView<HTMLDivElement>({ threshold: 0.25 });
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-end justify-center overflow-hidden pb-32">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
           src={logisticsHero}
           alt="Global logistics with ships and airplanes"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover brightness-50"
         />
-        <div className="absolute inset-0 gradient-hero"></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center text-white">
+      <div ref={heroContent.ref} className={`relative z-10 container mx-auto px-4 text-center text-white reveal-up ${heroContent.isInView ? 'reveal-in' : ''}`}>
         <div className="max-w-4xl mx-auto">
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-2xl">
             Logistically{" "}
-            <span className="bg-gradient-to-r from-success-light to-success bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-success-light to-success bg-clip-text text-transparent drop-shadow-2xl">
               Yours
             </span>
           </h1>
           
-          <div className="text-xl md:text-2xl font-semibold mb-4">
+          <div className="text-xl md:text-2xl font-semibold mb-4 text-white drop-shadow-xl">
             Aeroship Logistics Pvt. Ltd.
           </div>
 
           {/* Subtext */}
-          <p className="text-lg md:text-xl mb-6 text-white/90 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl mb-3 text-white max-w-3xl mx-auto drop-shadow-lg">
             Delivering excellence in Air, Sea, Road, and Rail freight management worldwide.
           </p>
 
           {/* Supporting Line */}
-          <p className="text-base md:text-lg mb-8 text-white/80 max-w-2xl mx-auto">
-            Your trusted global logistics partner with 6500+ overseas partners in 186 countries.
+          <p className="text-base md:text-lg mb-8 text-white max-w-2xl mx-auto drop-shadow-lg">
+            Your trusted global logistics partner connecting businesses worldwide with seamless freight solutions.
           </p>
 
           {/* CTA Buttons */}
@@ -49,30 +50,12 @@ export default function HeroSection() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+              className="border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 backdrop-blur-sm shadow-lg"
             >
               Get Quote
             </Button>
           </div>
 
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <div className="glass rounded-xl p-6 text-center">
-              <Globe className="w-8 h-8 mx-auto mb-3 text-success-light" />
-              <div className="text-2xl font-bold text-white">186</div>
-              <div className="text-sm text-white/80">Countries Served</div>
-            </div>
-            <div className="glass rounded-xl p-6 text-center">
-              <Users className="w-8 h-8 mx-auto mb-3 text-success-light" />
-              <div className="text-2xl font-bold text-white">6500+</div>
-              <div className="text-sm text-white/80">Overseas Partners</div>
-            </div>
-            <div className="glass rounded-xl p-6 text-center">
-              <Award className="w-8 h-8 mx-auto mb-3 text-success-light" />
-              <div className="text-2xl font-bold text-white">2011</div>
-              <div className="text-sm text-white/80">Years of Excellence</div>
-            </div>
-          </div>
         </div>
       </div>
 

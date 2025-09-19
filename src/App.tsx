@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import RenewableEnergy from "./pages/RenewableEnergy";
+import SolarEnergy from "./pages/SolarEnergy";
+import WindPower from "./pages/WindPower";
+import HydroPower from "./pages/HydroPower";
+import EVSolutions from "./pages/EVSolutions";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -22,6 +26,10 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
           <Route path="/renewable-energy" element={<RenewableEnergy />} />
+          <Route path="/solar-energy" element={<SolarEnergy />} />
+          <Route path="/wind-power" element={<WindPower />} />
+          <Route path="/hydro-power" element={<HydroPower />} />
+          <Route path="/ev-solutions" element={<EVSolutions />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

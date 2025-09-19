@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail } from "lucide-react";
+import logoImage from "@/assets/logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -42,14 +43,12 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">A</span>
-            </div>
-            <div>
-              <div className="font-bold text-xl text-foreground">Aeroship</div>
-              <div className="text-xs text-muted-foreground -mt-1">Logistics Pvt. Ltd.</div>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img
+              src={logoImage}
+              alt="Aeroship Logistics"
+              className="h-12 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}

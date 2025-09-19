@@ -163,3 +163,23 @@ All colors MUST be HSL.
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
+
+@layer utilities {
+  /* Scroll reveal animations */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 600ms ease, transform 600ms ease;
+  }
+  .reveal-item {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+    transition: opacity 600ms ease, transform 600ms ease;
+  }
+  .reveal-stagger.reveal-in .reveal-item,
+  .reveal-up.reveal-in,
+  .reveal-item.reveal-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
