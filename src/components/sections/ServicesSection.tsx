@@ -70,11 +70,19 @@ export default function ServicesSection() {
         >
           <SectionBadge>Our Services</SectionBadge>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 mt-4">
-            Our Services
+            Comprehensive{" "}
+            <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+              Logistics
+            </span>{" "}
+            &{" "}
+            <span className="bg-gradient-to-r from-success to-success-light bg-clip-text text-transparent">
+              Energy
+            </span>{" "}
+            Solutions
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Six core offerings tailored to your freight needs, delivered with quality
-            and a modern, eco-conscious design.
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            From global freight forwarding to renewable energy innovations, we deliver 
+            comprehensive solutions that power your business forward with sustainability and efficiency.
           </p>
         </div>
 
