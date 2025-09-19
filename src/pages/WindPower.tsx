@@ -2,6 +2,7 @@ import React from 'react';
 import { Wind, CheckCircle, TrendingUp, Users, Award } from 'lucide-react';
 import EnergySolutionPage from '@/components/energy/EnergySolutionPage';
 import renewableHero from '@/assets/renewable-hero.jpg';
+import windEnergy from '@/assets/windEnergy.png';
 
 const WindPower: React.FC = () => {
   const windData = {
@@ -42,7 +43,7 @@ const WindPower: React.FC = () => {
         "2,000 tons CO2 emissions prevented annually", 
         "3-year ROI achieved"
       ],
-      image: renewableHero
+      image: windEnergy
     },
     stats: [
       {

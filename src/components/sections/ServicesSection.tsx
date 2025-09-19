@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { useInView } from "@/hooks/use-in-view";
 import RenewableEnergySection from "./RenewableEnergySection";
+import SectionBadge from "@/components/ui/SectionBadge";
 import airImg from "@/assets/air.png";
 import oceanImg from "@/assets/ocean.png";
 import bulkCargoImg from "@/assets/bulkCargo.png";
@@ -67,7 +68,8 @@ export default function ServicesSection() {
           ref={header.ref}
           className={`text-center mb-12 reveal-up ${header.isInView ? "reveal-in" : ""}`}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <SectionBadge>Our Services</SectionBadge>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 mt-4">
             Our Services
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

@@ -2,6 +2,7 @@ import React from 'react';
 import { Sun, CheckCircle, TrendingUp, Users, Award } from 'lucide-react';
 import EnergySolutionPage from '@/components/energy/EnergySolutionPage';
 import renewableHero from '@/assets/solar.png';
+import solarBuilding from '@/assets/solarBuildeing.png';
 
 const SolarEnergy: React.FC = () => {
   const solarData = {
@@ -42,7 +43,7 @@ const SolarEnergy: React.FC = () => {
         "4 tons CO2 emissions prevented annually", 
         "5-year payback period achieved"
       ],
-      image: renewableHero
+      image: solarBuilding
     },
     stats: [
       {

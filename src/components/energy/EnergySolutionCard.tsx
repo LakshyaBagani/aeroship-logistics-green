@@ -37,7 +37,7 @@ const EnergySolutionCard: React.FC<EnergySolutionCardProps> = ({
     return (
       <div
         onClick={handleClick}
-        className="group relative rounded-3xl p-8 cursor-pointer reveal-item overflow-hidden h-full flex flex-col transition-all duration-700 hover:scale-105"
+        className="group relative rounded-3xl p-8 cursor-pointer overflow-hidden h-full flex flex-col transition-all duration-700 hover:scale-105"
         style={{ 
           transitionDelay: `${index * 150}ms`,
           background: 'rgba(255, 255, 255, 0.25)',
@@ -179,7 +179,7 @@ const EnergySolutionCard: React.FC<EnergySolutionCardProps> = ({
 
   // Full page version - detailed and immersive
   return (
-    <div className="group bg-white/95 backdrop-blur-md rounded-3xl p-8 text-center border border-gray-200 hover:border-emerald-400 transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/25 cursor-pointer reveal-item overflow-hidden">
+    <div className="group bg-white/95 backdrop-blur-md rounded-3xl p-8 text-center border border-gray-200 hover:border-emerald-400 transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-emerald-500/25 cursor-pointer overflow-hidden">
       {/* Enhanced hover background */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-100/30 via-transparent to-teal-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"></div>
       

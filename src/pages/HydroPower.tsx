@@ -2,6 +2,7 @@ import React from 'react';
 import { Zap, CheckCircle, TrendingUp, Users, Award } from 'lucide-react';
 import EnergySolutionPage from '@/components/energy/EnergySolutionPage';
 import renewableHero from '@/assets/hydro.png';
+import hydroElectricity from '@/assets/hydroElectricity.png';
 
 const HydroPower: React.FC = () => {
   const hydroData = {
@@ -42,7 +43,7 @@ const HydroPower: React.FC = () => {
         "80% reduction in energy costs", 
         "Zero diesel consumption"
       ],
-      image: renewableHero
+      image: hydroElectricity
     },
     stats: [
       {

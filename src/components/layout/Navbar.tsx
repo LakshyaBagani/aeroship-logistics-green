@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import logoImage from "@/assets/logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "Renewable Energy", href: "/renewable-energy" },
+  { name: "Services", href: "/services", scrollTo: "services" },
+  { name: "Renewable Energy", href: "/renewable-energy", scrollTo: "renewable-energy" },
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -15,6 +15,43 @@ const navigation = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavigation = (item: any) => {
+    if (item.scrollTo) {
+      // For Services and Renewable Energy
+      if (location.pathname === "/") {
+        // If we're on the home page, scroll to the section with offset
+        const element = document.getElementById(item.scrollTo);
+        if (element) {
+          const navbarHeight = 80; // Approximate navbar height
+          const elementPosition = element.offsetTop - navbarHeight;
+          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+          setIsMenuOpen(false);
+          return;
+        }
+      } else {
+        // If we're on another page, navigate to home first, then scroll
+        navigate("/");
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          const element = document.getElementById(item.scrollTo);
+          if (element) {
+            const navbarHeight = 80; // Approximate navbar height
+            const elementPosition = element.offsetTop - navbarHeight;
+            window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+          }
+        }, 100);
+        setIsMenuOpen(false);
+        return;
+      }
+    }
+    
+    // For other pages (About Us, Contact), navigate and scroll to top
+    navigate(item.href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-elegant">
@@ -54,9 +91,9 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
+              <button
                 key={item.name}
-                to={item.href}
+                onClick={() => handleNavigation(item)}
                 className={`text-sm font-medium transition-smooth hover:text-primary ${
                   location.pathname === item.href
                     ? "text-primary border-b-2 border-primary pb-1"
@@ -64,7 +101,7 @@ export default function Navbar() {
                 }`}
               >
                 {item.name}
-              </Link>
+              </button>
             ))}
             <Button variant="default" size="sm" className="gradient-primary">
               Get Quote
@@ -85,18 +122,17 @@ export default function Navbar() {
           <div className="md:hidden pb-4">
             <div className="flex flex-col space-y-3 pt-4 border-t border-border">
               {navigation.map((item) => (
-                <Link
+                <button
                   key={item.name}
-                  to={item.href}
-                  className={`text-sm font-medium py-2 px-3 rounded-md transition-smooth ${
+                  onClick={() => handleNavigation(item)}
+                  className={`text-sm font-medium py-2 px-3 rounded-md transition-smooth text-left ${
                     location.pathname === item.href
                       ? "bg-primary text-primary-foreground"
                       : "text-foreground hover:bg-muted"
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </button>
               ))}
               <Button variant="default" size="sm" className="gradient-primary w-fit">
                 Get Quote

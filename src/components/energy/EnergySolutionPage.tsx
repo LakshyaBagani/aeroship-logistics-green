@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, TrendingUp, Users, Award } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
@@ -42,6 +42,10 @@ const EnergySolutionPage: React.FC<EnergySolutionPageProps> = ({
   stats
 }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const handleBackClick = () => {
     navigate('/');

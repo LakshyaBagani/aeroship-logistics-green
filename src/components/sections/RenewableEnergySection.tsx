@@ -1,6 +1,13 @@
-import { Sun, Wind, Zap, Car } from "lucide-react";
+import { Sun, Wind, Zap, Car, Leaf, Globe, Award } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import EnergySolutionCard from "@/components/energy/EnergySolutionCard";
+import SolutionShowcase from "@/components/sections/SolutionShowcase";
+import solarImg from "@/assets/solar.png";
+import windImg from "@/assets/renewable-hero.jpg";
+import hydroImg from "@/assets/hydro.png";
+import evImg from "@/assets/evs.png";
+import SectionBadge from "@/components/ui/SectionBadge";
+import StatBadge from "@/components/ui/StatBadge";
 
 const energySolutions = [
   {
@@ -54,89 +61,135 @@ const energySolutions = [
 ];
 
 export default function RenewableEnergySection() {
-  const header = useInView<HTMLDivElement>({ threshold: 0.2 });
-  const grid = useInView<HTMLDivElement>({ threshold: 0.15 });
+  const headerRef = useInView<HTMLDivElement>({ threshold: 0.2 });
+  const gridRef = useInView<HTMLDivElement>({ threshold: 0.15 });
   const statsRef = useInView<HTMLDivElement>({ threshold: 0.15 });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
-      {/* Subtle background pattern */}
+    <section className="relative py-20 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #fefefe 0%, #f8faf9 25%, #f1f5f3 50%, #f8faf9 75%, #fefefe 100%)'
+    }}>
+      {/* Animated background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, #10b981 2px, transparent 2px),
-                           radial-gradient(circle at 75% 75%, #059669 2px, transparent 2px)`,
-          backgroundSize: '60px 60px'
+          backgroundImage: `
+            radial-gradient(circle at 20% 20%, rgba(134, 162, 139, 0.15) 1px, transparent 1px),
+            radial-gradient(circle at 80% 80%, rgba(107, 142, 115, 0.12) 1px, transparent 1px),
+            radial-gradient(circle at 40% 60%, rgba(156, 175, 136, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px, 120px 120px, 100px 100px',
         }}></div>
       </div>
+      
+      {/* Subtle stripe pattern overlay */}
+      <div className="absolute inset-0 opacity-3">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(134, 162, 139, 0.08) 2px,
+            rgba(134, 162, 139, 0.08) 4px
+          )`,
+        }}></div>
+      </div>
+      
+      {/* Semi-transparent overlay */}
+      <div className="absolute inset-0 bg-white/20"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Hero Content */}
-        <div
-          ref={header.ref}
-          className={`text-center mb-16 reveal-up ${header.isInView ? "reveal-in" : ""}`}
+        {/* Premium Section Header */}
+        <div 
+          ref={headerRef.ref}
+          className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          <SectionBadge icon={<Leaf className="w-4 h-4" style={{ color: '#10b981' }} />}>Renewable Energy Solutions</SectionBadge>
+          
+          <h2 
+            className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+            style={{
+              color: '#2d3748',
+              textShadow: '0 4px 8px rgba(0,0,0,0.1)',
+              fontWeight: '800',
+              letterSpacing: '-0.025em'
+            }}
+          >
             Clean Energy{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent relative">
+            <span style={{
+              background: 'linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
               Transformation
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent animate-pulse opacity-50"></div>
             </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+          </h2>
+          
+          <p 
+            className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed"
+            style={{
+              color: '#4a5568',
+              textShadow: '0 2px 4px rgba(0,0,0,0.05)'
+            }}
+          >
             Powering the future with sustainable solutions. Leading the global transition to renewable energy 
             through innovative technology and expert logistics.
           </p>
         </div>
 
-        {/* Energy Solution Cards */}
-        <div
-          ref={grid.ref}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16 reveal-stagger ${grid.isInView ? "reveal-in" : ""}`}
-        >
-          {energySolutions.map((solution, index) => (
-            <EnergySolutionCard
-              key={index}
-              title={solution.title}
-              tagline={solution.tagline}
-              features={solution.features}
-              icon={solution.icon}
-              gradient={solution.gradient}
-              route={solution.route}
-              index={index}
-              isLandingPage={true}
-            />
-          ))}
+        {/* Four dedicated solution showcases */}
+        <div className="space-y-10 md:space-y-12 mb-16">
+          <SolutionShowcase
+            title="Solar Energy"
+            Icon={Sun}
+            imageSrc={solarImg}
+            imageAlt="Solar panels"
+            summary="High‑efficiency PV systems engineered for clean, reliable power—reducing bills and carbon for homes, businesses, and industry."
+            points={["Battery storage & smart monitoring ready","Fast ROI with low maintenance","Rooftop and ground‑mount options"]}
+            route="/solar-energy"
+            imageLeft
+            accentBg="bg-yellow-400/90"
+          />
+          <SolutionShowcase
+            title="Wind Power"
+            Icon={Wind}
+            imageSrc={windImg}
+            imageAlt="Wind farm"
+            summary="Utility‑grade generation from onshore/offshore turbines with strong sustainability impact and low OPEX."
+            points={["Optimal AEP site studies","Turnkey delivery through O&M","Onshore & offshore ready"]}
+            route="/wind-power"
+            accentBg="bg-blue-500/90"
+          />
+          <SolutionShowcase
+            title="Hydro Power"
+            Icon={Zap}
+            imageSrc={hydroImg}
+            imageAlt="Hydroelectric plant"
+            summary="Predictable, long‑life energy from flowing water with grid stability and storage integration."
+            points={["Run‑of‑river and small hydro","Grid services & storage support","High reliability"]}
+            route="/hydro-power"
+            imageLeft
+            accentBg="bg-indigo-500/90"
+          />
+          <SolutionShowcase
+            title="EV Solutions"
+            Icon={Car}
+            imageSrc={evImg}
+            imageAlt="EV charging"
+            summary="Smart charging and fleet electrification to lower fuel costs, emissions, and downtime with dependable hardware and software."
+            points={["Single‑site to multi‑depot rollouts","Demand management & billing","Fleet electrification programs"]}
+            route="/ev-solutions"
+            accentBg="bg-emerald-600/90"
+            imageFit='cover'
+          />
         </div>
 
-        {/* Company Statistics */}
-        <div
-          ref={statsRef.ref}
-          className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 reveal-up ${statsRef.isInView ? "reveal-in" : ""}`}
-        >
-          <div className="group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center border border-gray-200 hover:border-emerald-400 transition-all duration-700 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/25 reveal-item overflow-hidden" style={{ transitionDelay: '0ms' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-100/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <div className="relative z-10">
-              <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">500+</div>
-              <div className="text-gray-600 text-lg group-hover:text-gray-800 transition-colors duration-300">Projects Completed</div>
-            </div>
-          </div>
-          <div className="group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center border border-gray-200 hover:border-green-400 transition-all duration-700 hover:-translate-y-2 hover:shadow-xl hover:shadow-green-500/25 reveal-item overflow-hidden" style={{ transitionDelay: '150ms' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-green-100/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <div className="relative z-10">
-              <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">50MW+</div>
-              <div className="text-gray-600 text-lg group-hover:text-gray-800 transition-colors duration-300">Energy Generated</div>
-            </div>
-          </div>
-          <div className="group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center border border-gray-200 hover:border-teal-400 transition-all duration-700 hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-500/25 reveal-item overflow-hidden" style={{ transitionDelay: '300ms' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-100/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <div className="relative z-10">
-              <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors duration-300">15+</div>
-              <div className="text-gray-600 text-lg group-hover:text-gray-800 transition-colors duration-300">Years Experience</div>
-            </div>
-          </div>
+        {/* Premium Company Statistics */}
+        <div ref={statsRef.ref} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <StatBadge icon={<Award className="w-8 h-8 text-white" />} value="500+" label="Projects Completed" gradient="from-blue-500 to-indigo-600" />
+          <StatBadge icon={<Globe className="w-8 h-8 text-white" />} value="50MW+" label="Energy Generated" gradient="from-emerald-500 to-green-600" />
+          <StatBadge icon={<Leaf className="w-8 h-8 text-white" />} value="15+" label="Years Experience" gradient="from-teal-500 to-cyan-600" />
         </div>
-
-
       </div>
     </section>
   );

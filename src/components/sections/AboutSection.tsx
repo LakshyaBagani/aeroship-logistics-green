@@ -8,19 +8,93 @@ import {
   CheckCircle,
   Target,
   Heart,
-  Zap
+  Zap,
+  MapPin,
+  Building2,
+  TrendingUp
 } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
 
 export default function AboutSection() {
+  const headerRef = useInView<HTMLDivElement>({ threshold: 0.2 });
+  const storyRef = useInView<HTMLDivElement>({ threshold: 0.15 });
+  const valuesRef = useInView<HTMLDivElement>({ threshold: 0.15 });
+  const officesRef = useInView<HTMLDivElement>({ threshold: 0.15 });
   return (
-    <section className="py-16 bg-background-alt">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            About Aeroship Logistics
+    <section className="relative py-20 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #fefefe 0%, #f8faf9 25%, #f1f5f3 50%, #f8faf9 75%, #fefefe 100%)'
+    }}>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            radial-gradient(circle at 20% 20%, rgba(134, 162, 139, 0.15) 1px, transparent 1px),
+            radial-gradient(circle at 80% 80%, rgba(107, 142, 115, 0.12) 1px, transparent 1px),
+            radial-gradient(circle at 40% 60%, rgba(156, 175, 136, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px, 120px 120px, 100px 100px',
+        }}></div>
+      </div>
+      
+      {/* Subtle stripe pattern overlay */}
+      <div className="absolute inset-0 opacity-3">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(134, 162, 139, 0.08) 2px,
+            rgba(134, 162, 139, 0.08) 4px
+          )`,
+        }}></div>
+      </div>
+      
+      {/* Semi-transparent overlay */}
+      <div className="absolute inset-0 bg-white/20"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Premium Section Header */}
+        <div 
+          ref={headerRef.ref}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{
+            background: 'rgba(16, 185, 129, 0.1)',
+            border: '1px solid rgba(16, 185, 129, 0.2)'
+          }}>
+            <Building2 className="w-4 h-4" style={{ color: '#10b981' }} />
+            <span className="text-sm font-medium" style={{ color: '#10b981' }}>
+              About Our Company
+            </span>
+          </div>
+          
+          <h2 
+            className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+            style={{
+              color: '#2d3748',
+              textShadow: '0 4px 8px rgba(0,0,0,0.1)',
+              fontWeight: '800',
+              letterSpacing: '-0.025em'
+            }}
+          >
+            About{" "}
+            <span style={{
+              background: 'linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              Aeroship Logistics
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          
+          <p 
+            className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed"
+            style={{
+              color: '#4a5568',
+              textShadow: '0 2px 4px rgba(0,0,0,0.05)'
+            }}
+          >
             A trusted name in global logistics and renewable energy solutions since 2011
           </p>
         </div>
@@ -140,35 +214,138 @@ export default function AboutSection() {
           </Card>
         </div>
 
-        {/* Global Offices */}
-        <Card className="glass mt-12">
-          <CardContent className="p-8">
-            <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
-              Our Global Presence
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="text-lg font-semibold text-foreground mb-2">Delhi (HQ)</div>
-                <p className="text-sm text-muted-foreground">
-                  Corporate headquarters managing global operations and strategic partnerships
+        {/* Premium Global Presence */}
+        <div 
+          ref={officesRef.ref}
+          className="mt-16"
+        >
+          <div 
+            className="relative rounded-3xl p-8 md:p-12 overflow-hidden"
+            style={{
+              background: 'rgba(255, 255, 255, 0.9)',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1), 0 8px 20px rgba(0, 0, 0, 0.05)'
+            }}
+          >
+            {/* Animated background gradient */}
+            <div className="absolute inset-0 opacity-20" style={{
+              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%)',
+            }}></div>
+            
+            <div className="relative z-10">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{
+                  background: 'rgba(16, 185, 129, 0.1)',
+                  border: '1px solid rgba(16, 185, 129, 0.2)'
+                }}>
+                  <MapPin className="w-4 h-4" style={{ color: '#10b981' }} />
+                  <span className="text-sm font-medium" style={{ color: '#10b981' }}>
+                    Global Presence
+                  </span>
+                </div>
+                
+                <h3 
+                  className="text-3xl md:text-4xl font-bold mb-4"
+                  style={{
+                    color: '#2d3748',
+                    textShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                    fontWeight: '800'
+                  }}
+                >
+                  Our Global{" "}
+                  <span style={{
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}>
+                    Presence
+                  </span>
+                </h3>
+                <p 
+                  className="text-lg text-muted-foreground max-w-3xl mx-auto"
+                  style={{
+                    textShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                  }}
+                >
+                  Strategically located offices across India to serve our global clientele with excellence
                 </p>
               </div>
-              <div>
-                <div className="text-lg font-semibold text-foreground mb-2">Gandhidham</div>
-                <p className="text-sm text-muted-foreground">
-                  Port operations and customs clearance hub for western India logistics
-                </p>
-              </div>
-              <div>
-                <div className="text-lg font-semibold text-foreground mb-2">Bangalore</div>
-                <p className="text-sm text-muted-foreground">
-                  Technology and renewable energy solutions center for southern operations
-                </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[{
+                  city: "Delhi (HQ)",
+                  description: "Corporate headquarters managing global operations and strategic partnerships",
+                  icon: Building2,
+                  gradient: "from-blue-500 to-indigo-600",
+                  delay: "0ms"
+                },{
+                  city: "Gandhidham",
+                  description: "Port operations and customs clearance hub for western India logistics",
+                  icon: MapPin,
+                  gradient: "from-emerald-500 to-green-600",
+                  delay: "150ms"
+                },{
+                  city: "Bangalore",
+                  description: "Technology and renewable energy solutions center for southern operations",
+                  icon: TrendingUp,
+                  gradient: "from-purple-500 to-indigo-600",
+                  delay: "300ms"
+                }].map((office, index) => (
+                  <div
+                    key={index}
+                    className="group text-center p-6 rounded-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden"
+                    style={{ 
+                      transitionDelay: office.delay,
+                      background: 'rgba(255, 255, 255, 0.9)',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
+                      boxShadow: '0 8px 25px rgba(0, 0, 0, 0.1)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)';
+                      e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                    }}
+                  >
+                    <div 
+                      className={`w-16 h-16 bg-gradient-to-br ${office.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                      style={{
+                        boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)'
+                      }}
+                    >
+                      <office.icon className="w-8 h-8 text-white" />
+                    </div>
+                    
+                    <div 
+                      className="text-xl font-bold mb-3 group-hover:text-emerald-600 transition-colors duration-300"
+                      style={{
+                        color: '#2d3748',
+                        textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                      }}
+                    >
+                      {office.city}
+                    </div>
+                    
+                    <p 
+                      className="text-sm leading-relaxed font-medium"
+                      style={{
+                        color: '#4a5568',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.05)'
+                      }}
+                    >
+                      {office.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
+
     </section>
   );
 }
