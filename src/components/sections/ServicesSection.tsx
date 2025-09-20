@@ -35,7 +35,7 @@ const services: ServiceItem[] = [
     image: bulkCargoImg,
   },
   {
-    title: "Project Logistics",
+    title: "Project Cargo",
     description:
       "Aeroship Logistics uses the most efficient methods available for transportation and order fulfillment and coupled with our many years of experience, we can be a single-source solution to meet your total logistics and distribution needs.",
     image: projectImg,

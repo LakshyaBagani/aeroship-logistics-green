@@ -252,15 +252,15 @@ const Contact = () => {
               {[{
                 city: 'Delhi (HQ)',
                 color: '#3b82f6',
-                address: 'Khasra No. 346, First Floor, At Extend Lal Dora Main Road, Opp. Palam Appartment, Above HDFC Bank Bijwasan New Delhi - 110061'
+                address: 'New Delhi'
               },{
                 city: 'Gandhidham',
                 color: '#10b981',
-                address: 'BBZ S57, First Floor, Zanda Chok, Gandhidham, Kutch Gujarat 370201'
+                address: 'Gandhidham, Gujarat'
               },{
                 city: 'Bangalore',
                 color: '#6366f1',
-                address: 'Building No, Third Floor, L-4, Jeevan Bima Nagar Main Rd, above Mannapuram Finance Limited, LIC Colony, HAL 3rd Stage, Sector 12, Jeevan Bima Nagar, Bengaluru, Karnataka - 560075'
+                address: 'Bangalore, Karnataka'
               }].map((o, idx) => (
                 <div key={idx} className="relative rounded-2xl p-6 text-center transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]" style={{
                   background: 'rgba(255, 255, 255, 0.4)',

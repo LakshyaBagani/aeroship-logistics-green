@@ -10,24 +10,61 @@ import {
   Instagram,
   MessageCircle
 } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const quickLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "Renewable Energy", href: "/renewable-energy" },
+  { name: "Services", href: "/services", scrollTo: "services" },
+  { name: "Renewable Energy", href: "/renewable-energy", scrollTo: "renewable-energy" },
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 
 const services = [
-  { name: "Air Freight", href: "/services/air-freight" },
-  { name: "Sea Freight", href: "/services/sea-freight" },
-  { name: "Road Transport", href: "/services/road-transport" },
-  { name: "Rail Freight", href: "/services/rail-freight" },
-  { name: "Custom Clearance", href: "/services/customs" },
+  { name: "Air Freight", href: "/#services" },
+  { name: "Sea Freight", href: "/#services" },
+  { name: "Road Transport", href: "/#services" },
+  { name: "Rail Freight", href: "/#services" },
+  { name: "Custom Clearance", href: "/#services" },
 ];
 
 export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigation = (item: any) => {
+    if (item.scrollTo) {
+      // For Services and Renewable Energy
+      if (location.pathname === "/") {
+        // If we're on the home page, scroll to the section with offset
+        const element = document.getElementById(item.scrollTo);
+        if (element) {
+          const navbarHeight = 80; // Approximate navbar height
+          const elementPosition = element.offsetTop - navbarHeight;
+          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+          return;
+        }
+      } else {
+        // If we're on another page, navigate to home first, then scroll
+        navigate("/");
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          const element = document.getElementById(item.scrollTo);
+          if (element) {
+            const navbarHeight = 80; // Approximate navbar height
+            const elementPosition = element.offsetTop - navbarHeight;
+            window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+          }
+        }, 100);
+        return;
+      }
+    }
+    
+    // For other pages (About Us, Contact), navigate and scroll to top
+    navigate(item.href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground">
       {/* Main Footer Content */}
@@ -62,12 +99,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a 
-                    href={link.href}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-smooth hover:underline"
+                  <button 
+                    onClick={() => handleNavigation(link)}
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-smooth hover:underline text-left"
                   >
                     {link.name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -79,12 +116,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service.name}>
-                  <a 
-                    href={service.href}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-smooth hover:underline"
+                  <button 
+                    onClick={() => handleNavigation({ href: "/", scrollTo: "services" })}
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-smooth hover:underline text-left"
                   >
                     {service.name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -142,8 +179,7 @@ export default function Footer() {
               </div>
               <h4 className="font-semibold text-primary-foreground mb-2">Delhi (Corporate Office)</h4>
               <p className="text-primary-foreground/80 leading-relaxed">
-                Khasra No. 346, First Floor, At Extend Lal Dora Main Road, 
-                Opp. Palam Appartment, Above HDFC Bank Bijwasan New Delhi - 110061
+                New Delhi
               </p>
             </div>
 
@@ -156,8 +192,7 @@ export default function Footer() {
               </div>
               <h4 className="font-semibold text-primary-foreground mb-2">Gandhidham</h4>
               <p className="text-primary-foreground/80 leading-relaxed">
-                BBZ S57, First Floor, Zanda Chok, 
-                Gandhidham, Kutch Gujarat 370201
+                Gandhidham, Gujarat
               </p>
             </div>
 
@@ -170,9 +205,7 @@ export default function Footer() {
               </div>
               <h4 className="font-semibold text-primary-foreground mb-2">Bangalore</h4>
               <p className="text-primary-foreground/80 leading-relaxed">
-                Building No, Third Floor, L-4, Jeevan Bima Nagar Main Rd, 
-                above Mannapuram Finance Limited, LIC Colony, HAL 3rd Stage, 
-                Sector 12, Jeevan Bima Nagar, Bengaluru, Karnataka - 560075
+                Bangalore, Karnataka
               </p>
             </div>
           </div>
