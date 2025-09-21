@@ -30,14 +30,14 @@ export default function GreetingSection() {
               }}>
                 <img
                   src={greetingImage}
-                  alt="Aeroship Logistics"
+                  alt="Logigreen Global Logistics"
                   className="w-full h-80 object-cover rounded-2xl shadow-lg"
                 />
                 <div className="mt-6 flex items-center gap-3">
                   <Handshake className="w-8 h-8" style={{ color: '#6b8e6b' }} />
                   <div>
                     <h2 className="text-2xl font-bold" style={{ color: '#2d3748' }}>
-                      Welcome to Aeroship Logistics
+                      Welcome to Logigreen Global Logistics
                     </h2>
                     <p className="text-sm" style={{ color: '#6b8e6b' }}>
                       Your trusted logistics partner since 2011
@@ -63,7 +63,7 @@ export default function GreetingSection() {
               </h3>
               
               <p className="text-lg leading-relaxed" style={{ color: '#4a5568' }}>
-                Aeroship Logistics Pvt Ltd is an International Freight Forwarding Company 
+                Logigreen Global Logistics India Pvt Ltd is an International Freight Forwarding Company 
                 Established in 2011, Delhi based have presence in Gujrat & Bangalore
               </p>
             </div>

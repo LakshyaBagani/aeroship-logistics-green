@@ -2,9 +2,36 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import logisticsHero from "@/assets/logistics-hero.jpg";
 import { useInView } from "@/hooks/use-in-view";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function HeroSection() {
   const heroContent = useInView<HTMLDivElement>({ threshold: 0.25 });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleExploreServices = () => {
+    if (location.pathname === "/") {
+      // If we're on the home page, scroll to the renewable energy section
+      const element = document.getElementById("renewable-energy");
+      if (element) {
+        const navbarHeight = 100; // Approximate navbar height
+        const elementPosition = element.offsetTop - navbarHeight;
+        window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+        return;
+      }
+    } else {
+      // If we're on another page, navigate to home first, then scroll
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById("renewable-energy");
+        if (element) {
+          const navbarHeight = 100; // Approximate navbar height
+          const elementPosition = element.offsetTop - navbarHeight;
+          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
   return (
     <section className="relative min-h-screen flex items-end justify-center overflow-hidden pb-32">
       {/* Background Image */}
@@ -28,7 +55,7 @@ export default function HeroSection() {
           </h1>
           
           <div className="text-xl md:text-2xl font-semibold mb-4 text-white drop-shadow-xl">
-            Aeroship Logistics Pvt. Ltd.
+            Logigreen Global Logistics India Pvt. Ltd.
           </div>
 
           {/* Subtext */}
@@ -43,7 +70,11 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="gradient-eco text-success-foreground hover:scale-105 transition-smooth">
+            <Button 
+              size="lg" 
+              className="bg-green-600 hover:bg-green-700 text-white font-semibold hover:scale-105 transition-smooth"
+              onClick={handleExploreServices}
+            >
               Explore Our Services
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>

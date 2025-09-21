@@ -24,7 +24,7 @@ export default function Navbar() {
         // If we're on the home page, scroll to the section with offset
         const element = document.getElementById(item.scrollTo);
         if (element) {
-          const navbarHeight = 80; // Approximate navbar height
+          const navbarHeight = 100; // Approximate navbar height
           const elementPosition = element.offsetTop - navbarHeight;
           window.scrollTo({ top: elementPosition, behavior: 'smooth' });
           setIsMenuOpen(false);
@@ -37,7 +37,7 @@ export default function Navbar() {
         setTimeout(() => {
           const element = document.getElementById(item.scrollTo);
           if (element) {
-            const navbarHeight = 80; // Approximate navbar height
+            const navbarHeight = 100; // Approximate navbar height
             const elementPosition = element.offsetTop - navbarHeight;
             window.scrollTo({ top: elementPosition, behavior: 'smooth' });
           }
@@ -56,7 +56,7 @@ export default function Navbar() {
   return (
     <nav className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-elegant">
       {/* Top Contact Bar */}
-      <div className="bg-primary text-primary-foreground">
+      <div className="bg-green-600 text-white">
         <div className="container mx-auto px-4 py-2">
           <div className="flex justify-between items-center text-sm">
             <div className="hidden md:flex items-center space-x-6">
@@ -78,13 +78,13 @@ export default function Navbar() {
 
       {/* Main Navigation */}
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src={logoImage}
-              alt="Aeroship Logistics"
-              className="h-12 w-auto object-contain"
+              alt="Logigreen Global Logistics"
+              className="h-20 w-70 object-contain"
             />
           </Link>
 
@@ -94,16 +94,16 @@ export default function Navbar() {
               <button
                 key={item.name}
                 onClick={() => handleNavigation(item)}
-                className={`text-sm font-medium transition-smooth hover:text-primary ${
+                className={`text-sm font-semibold transition-smooth hover:text-green-600 ${
                   location.pathname === item.href
-                    ? "text-primary border-b-2 border-primary pb-1"
-                    : "text-foreground"
+                    ? "text-green-600 border-b-2 border-green-600 pb-1"
+                    : "text-gray-800 hover:text-green-500"
                 }`}
               >
                 {item.name}
               </button>
             ))}
-            <Button variant="default" size="sm" className="gradient-primary">
+            <Button variant="default" size="sm" className="bg-green-600 hover:bg-green-700 text-white font-semibold">
               Get Quote
             </Button>
           </div>
@@ -125,16 +125,16 @@ export default function Navbar() {
                 <button
                   key={item.name}
                   onClick={() => handleNavigation(item)}
-                  className={`text-sm font-medium py-2 px-3 rounded-md transition-smooth text-left ${
+                  className={`text-sm font-semibold py-2 px-3 rounded-md transition-smooth text-left ${
                     location.pathname === item.href
-                      ? "bg-primary text-primary-foreground"
-                      : "text-foreground hover:bg-muted"
+                      ? "bg-green-600 text-white"
+                      : "text-gray-800 hover:bg-green-50 hover:text-green-600"
                   }`}
                 >
                   {item.name}
                 </button>
               ))}
-              <Button variant="default" size="sm" className="gradient-primary w-fit">
+              <Button variant="default" size="sm" className="bg-green-600 hover:bg-green-700 text-white font-semibold w-fit">
                 Get Quote
               </Button>
             </div>

@@ -71,7 +71,7 @@ export default function OtherBusinessesSection() {
             Industries We Serve
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-            Aeroship is a logistics service provider to importers and exporters worldwide 
+            Logigreen is a logistics service provider to importers and exporters worldwide 
             with a vital resource for global supply chains.
           </p>
           
@@ -79,7 +79,7 @@ export default function OtherBusinessesSection() {
           <Card className="glass max-w-4xl mx-auto border-l-4 border-l-primary">
             <CardContent className="p-6">
               <blockquote className="text-lg text-foreground italic">
-                "Aeroship is a logistics service provider to importers and exporters worldwide 
+                "Logigreen is a logistics service provider to importers and exporters worldwide 
                 with a vital resource for global supply chains."
               </blockquote>
             </CardContent>

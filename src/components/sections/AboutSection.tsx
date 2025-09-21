@@ -84,7 +84,7 @@ export default function AboutSection() {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              Aeroship Logistics
+              Aeroship 
             </span>
           </h2>
           

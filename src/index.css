@@ -9,7 +9,7 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Brand Colors - Professional Corporate Blue */
-    --primary: 214 88% 27%;        /* Deep Aeroship Blue */
+    --primary: 214 88% 27%;        /* Deep Blue */
     --primary-foreground: 210 40% 98%;
     --primary-light: 214 100% 50%;  /* Bright Blue Accent */
     --primary-dark: 214 100% 20%;   /* Navy Blue */
@@ -18,8 +18,8 @@ All colors MUST be HSL.
     --success: 142 76% 36%;         /* Professional Green */
     --success-foreground: 0 0% 100%;
     --success-light: 142 69% 58%;   /* Light Green */
-    --eco-gradient-start: 142 76% 36%;
-    --eco-gradient-end: 158 64% 52%;
+    --eco-gradient-start: 142 76% 50%;
+    --eco-gradient-end: 158 64% 65%;
     
     /* Background System */
     --background: 0 0% 100%;
@@ -182,4 +182,19 @@ All colors MUST be HSL.
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+/* Custom Green Theme for Footer and Top Section */
+.footer-green {
+  --primary: 142 76% 45% !important;
+  --primary-foreground: 0 0% 100% !important;
+  --primary-light: 142 69% 65% !important;
+  --primary-dark: 142 76% 35% !important;
+}
+
+.top-section-green {
+  --primary: 142 76% 45% !important;
+  --primary-foreground: 0 0% 100% !important;
+  --primary-light: 142 69% 65% !important;
+  --primary-dark: 142 76% 35% !important;
 }
