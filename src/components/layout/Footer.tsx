@@ -74,23 +74,18 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
+                <span className="text-white font-bold text-xl">L</span>
               </div>
               <div>
-                <div className="font-bold text-xl text-white">Aeroship</div>
+                <div className="font-bold text-xl text-white">LogiGreen</div>
                 <div className="text-sm text-white/90">Logistics Pvt. Ltd.</div>
               </div>
             </div>
             
             <p className="text-white mb-6 leading-relaxed">
-              Your trusted global logistics partner with 6500+ overseas partners in 186 countries. 
-              Specializing in Air, Sea, Road, and Rail freight management worldwide.
+            Your trusted partner in sustainable energy solutions. Delivering renewable energy resources and green technologies across the globe with efficiency and reliability. Partnering with eco-conscious suppliers and carriers worldwide, we specialize in clean energy logistics, supporting a greener, smarter future.
             </p>
 
-            <div className="space-y-2 text-sm">
-              <div className="text-white font-semibold">ISO 9001:2015 Certified</div>
-              <div className="text-white font-semibold">WCA & JCTRANS Member</div>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -149,17 +144,7 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-start space-x-3">
-                <Globe className="w-5 h-5 text-white flex-shrink-0 mt-1" />
-                <a 
-                  href="https://www.aeroshipgroup.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-white transition-smooth font-medium"
-                >
-                  www.aeroshipgroup.com
-                </a>
-              </div>
+              
             </div>
           </div>
         </div>
