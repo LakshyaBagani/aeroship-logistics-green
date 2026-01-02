@@ -138,9 +138,7 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-white flex-shrink-0 mt-1" />
                 <div className="text-sm">
-                  <div className="text-white font-medium">vishal.saxena@aeroshipgroup.com</div>
-                  <div className="text-white font-medium">sales1@aeroshipgroup.com</div>
-                  <div className="text-white font-medium">pricing@aeroshipgroup.com</div>
+                  <div className="text-white font-medium">info@logigreengloballogistics.com</div>
                 </div>
               </div>
 
@@ -202,7 +200,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-white text-sm mb-4 md:mb-0 font-medium">
-              © 2024 Aeroship Logistics Pvt. Ltd. All rights reserved.
+              © 2024 LogiGreen Logistics Pvt. Ltd. All rights reserved.
             </div>
             
             {/* Social Media Icons */}

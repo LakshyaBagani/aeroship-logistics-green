@@ -95,7 +95,7 @@ export default function AboutSection() {
               textShadow: '0 2px 4px rgba(0,0,0,0.05)'
             }}
           >
-            A trusted name in global logistics and renewable energy solutions since 2011
+            A trusted name in global logistics and renewable energy solutions
           </p>
         </div>
 
@@ -104,17 +104,13 @@ export default function AboutSection() {
           <CardContent className="p-8 md:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
-                <div className="flex items-center mb-6">
-                  <Calendar className="w-6 h-6 text-primary mr-3" />
-                  <span className="text-xl font-semibold text-foreground">Established 2011</span>
-                </div>
                 
                 <h3 className="text-2xl font-bold text-foreground mb-4">
                   Our Journey of Excellence
                 </h3>
                 
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Founded in 2011, Aeroship Logistics Pvt. Ltd. has grown from a vision to become 
+                  Aeroship Logistics Pvt. Ltd. has grown from a vision to become 
                   a leading global logistics service provider. We are proud members of WCA & JCTRANS, 
                   with a strong presence spanning 186 countries and partnerships with over 6500 overseas agents.
                 </p>

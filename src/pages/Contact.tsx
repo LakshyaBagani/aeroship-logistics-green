@@ -110,9 +110,7 @@ const Contact = () => {
                 icon: Mail,
                 content: (
                   <div className="space-y-3">
-                    <div className="text-muted-foreground text-base">vishal.saxena@aeroshipgroup.com</div>
-                    <div className="text-muted-foreground text-base">sales1@aeroshipgroup.com</div>
-                    <div className="text-muted-foreground text-base">pricing@aeroshipgroup.com</div>
+                    <div className="text-muted-foreground text-base">info@logigreengloballogistics.com</div>
                   </div>
                 )
               },{

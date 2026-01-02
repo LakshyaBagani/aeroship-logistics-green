@@ -66,7 +66,7 @@ export default function Navbar() {
               </div>
               <div className="flex items-center space-x-1">
                 <Mail className="w-3 h-3" />
-                <span>sales1@aeroshipgroup.com</span>
+                <span>info@logigreengloballogistics.com</span>
               </div>
             </div>
             <div className="text-xs">
