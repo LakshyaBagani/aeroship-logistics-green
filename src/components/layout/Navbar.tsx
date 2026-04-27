@@ -70,7 +70,7 @@ export default function Navbar() {
               </div>
             </div>
             <div className="text-xs">
-              ISO 9001:2015 Certified Company | WCA & JCTRANS Member
+              ISO 9001:2015 Certified Company
             </div>
           </div>
         </div>

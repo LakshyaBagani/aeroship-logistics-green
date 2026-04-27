@@ -100,8 +100,6 @@ const Contact = () => {
                 icon: Phone,
                 content: (
                   <div className="space-y-3">
-                    <div className="text-foreground font-semibold text-lg">Mr. Vishal Saxena</div>
-                    <div className="text-muted-foreground text-base">+91 98100-37127</div>
                     <div className="text-muted-foreground text-base">011-28061366, 28061266</div>
                   </div>
                 )
@@ -156,21 +154,20 @@ const Contact = () => {
               background: 'rgba(255, 255, 255, 0.8)',
               backdropFilter: 'blur(25px)',
               border: '1px solid rgba(255, 255, 255, 0.5)',
-              boxShadow: '0 25px 80px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.1)',
-              minHeight: '650px'
+              boxShadow: '0 25px 80px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.1)'
             }}>
               {/* Animated background overlay */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{
                 background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%)'
               }}></div>
               
-              <div className="relative z-10 p-10 h-full flex flex-col">
+              <div className="relative z-10 p-10">
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-bold text-foreground mb-3 group-hover:text-emerald-600 transition-colors duration-500">Send Us a Message</h2>
                   <p className="text-muted-foreground">We'll get back to you within 24 hours</p>
                 </div>
                 
-                <form className="space-y-6 flex-grow flex flex-col">
+                <form className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Input 
@@ -207,13 +204,13 @@ const Contact = () => {
                       className="h-14 text-base rounded-2xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-emerald-500/20 transition-all duration-300 hover:border-emerald-400" 
                     />
                   </div>
-                  <div className="space-y-2 flex-grow">
-                    <Textarea 
-                      placeholder="Tell us about your logistics requirements..." 
-                      className="min-h-40 text-base rounded-2xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-emerald-500/20 transition-all duration-300 hover:border-emerald-400 resize-none"
+                  <div className="space-y-2">
+                    <Textarea
+                      placeholder="Tell us about your logistics requirements..."
+                      className="min-h-24 text-base rounded-2xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-emerald-500/20 transition-all duration-300 hover:border-emerald-400 resize-none"
                     />
                   </div>
-                  <div className="mt-auto space-y-6">
+                  <div className="space-y-4">
                     <Button className="w-full h-16 text-lg font-bold rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-2xl" style={{
                       background: 'linear-gradient(135deg, #10b981, #059669)',
                       boxShadow: '0 12px 35px rgba(16, 185, 129, 0.4)'
@@ -250,7 +247,7 @@ const Contact = () => {
               {[{
                 city: 'Delhi (HQ)',
                 color: '#3b82f6',
-                address: 'New Delhi'
+                address: 'First Floor, H.No.53, KH No. 346, Bijwasan Flyover, Above HDFC Bank, Bijwasan, New Delhi, South West Delhi – 110061'
               },{
                 city: 'Gandhidham',
                 color: '#10b981',

@@ -129,8 +129,6 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-white flex-shrink-0 mt-1" />
                 <div>
-                  <div className="text-white font-bold">Mr. Vishal Saxena</div>
-                  <div className="text-white text-sm font-medium">+91 98100-37127</div>
                   <div className="text-white text-sm font-medium">011-28061366, 28061266</div>
                 </div>
               </div>
@@ -162,7 +160,10 @@ export default function Footer() {
               </div>
               <h4 className="font-bold text-white mb-2">Delhi (Corporate Office)</h4>
               <p className="text-white leading-relaxed font-medium">
-                New Delhi
+                First Floor, H.No.53, KH No. 346<br />
+                Bijwasan Flyover, Above HDFC Bank<br />
+                Bijwasan, New Delhi<br />
+                South West Delhi – 110061
               </p>
             </div>
 
