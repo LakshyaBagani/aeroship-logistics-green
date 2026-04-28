@@ -129,7 +129,6 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-white flex-shrink-0 mt-1" />
                 <div>
-                  <div className="text-white text-sm font-medium">011-28061366, 28061266</div>
                 </div>
               </div>
 
