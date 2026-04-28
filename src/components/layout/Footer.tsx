@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { 
   MapPin, 
-  Phone, 
   Mail, 
   Globe, 
   Facebook, 
@@ -126,12 +125,6 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-6 text-white">Contact Us</h3>
             <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-white flex-shrink-0 mt-1" />
-                <div>
-                </div>
-              </div>
-
               <div className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-white flex-shrink-0 mt-1" />
                 <div className="text-sm">

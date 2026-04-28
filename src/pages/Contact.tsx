@@ -5,51 +5,48 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Globe, Clock, Send, ShieldCheck, MessageSquare } from "lucide-react";
+import { Phone, Mail, Globe, Clock, Send, ShieldCheck, MessageSquare } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 const Contact = () => {
   const headerRef = useInView<HTMLDivElement>({ threshold: 0.2 });
   const gridRef = useInView<HTMLDivElement>({ threshold: 0.15 });
-  const officesRef = useInView<HTMLDivElement>({ threshold: 0.15 });
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{
-      background: 'linear-gradient(135deg, #fefefe 0%, #f8faf9 25%, #f1f5f3 50%, #f8faf9 75%, #fefefe 100%)'
-    }}>
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            radial-gradient(circle at 20% 20%, rgba(134, 162, 139, 0.15) 1px, transparent 1px),
-            radial-gradient(circle at 80% 80%, rgba(107, 142, 115, 0.12) 1px, transparent 1px),
-            radial-gradient(circle at 40% 60%, rgba(156, 175, 136, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px, 120px 120px, 100px 100px',
-        }}></div>
-      </div>
-      
-      {/* Subtle stripe pattern overlay */}
-      <div className="absolute inset-0 opacity-3">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 2px,
-            rgba(134, 162, 139, 0.08) 2px,
-            rgba(134, 162, 139, 0.08) 4px
-          )`,
-        }}></div>
-      </div>
-      
-      {/* Semi-transparent overlay */}
-      <div className="absolute inset-0 bg-white/20"></div>
-
+    <div className="min-h-screen">
       <Navbar />
+      <div className="relative overflow-hidden" style={{
+        background: 'linear-gradient(135deg, #fefefe 0%, #f8faf9 25%, #f1f5f3 50%, #f8faf9 75%, #fefefe 100%)'
+      }}>
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 20%, rgba(134, 162, 139, 0.15) 1px, transparent 1px),
+              radial-gradient(circle at 80% 80%, rgba(107, 142, 115, 0.12) 1px, transparent 1px),
+              radial-gradient(circle at 40% 60%, rgba(156, 175, 136, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px, 120px 120px, 100px 100px',
+          }}></div>
+        </div>
+        {/* Subtle stripe pattern overlay */}
+        <div className="absolute inset-0 opacity-3 pointer-events-none">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 2px,
+              rgba(134, 162, 139, 0.08) 2px,
+              rgba(134, 162, 139, 0.08) 4px
+            )`,
+          }}></div>
+        </div>
+        {/* Semi-transparent overlay */}
+        <div className="absolute inset-0 bg-white/20 pointer-events-none"></div>
       <main className="pt-16 relative z-10">
         {/* Premium Header */}
         <div className="container mx-auto px-4 py-16">
@@ -229,54 +226,9 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Office Locations */}
-          <div ref={officesRef.ref} className={`mt-16 reveal-up ${officesRef.isInView ? 'reveal-in' : ''}`}>
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{
-                background: 'rgba(16, 185, 129, 0.1)',
-                border: '1px solid rgba(16, 185, 129, 0.2)'
-              }}>
-                <MapPin className="w-4 h-4" style={{ color: '#10b981' }} />
-                <span className="text-sm font-medium" style={{ color: '#10b981' }}>
-                  Office Locations
-                </span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">Our Office Locations</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[{
-                city: 'Delhi (HQ)',
-                color: '#3b82f6',
-                address: 'First Floor, H.No.53, KH No. 346, Bijwasan Flyover, Above HDFC Bank, Bijwasan, New Delhi, South West Delhi – 110061'
-              },{
-                city: 'Gandhidham',
-                color: '#10b981',
-                address: 'Gandhidham, Gujarat'
-              },{
-                city: 'Bangalore',
-                color: '#6366f1',
-                address: 'Bangalore, Karnataka'
-              }].map((o, idx) => (
-                <div key={idx} className="relative rounded-2xl p-6 text-center transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]" style={{
-                  background: 'rgba(255, 255, 255, 0.4)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.1)'
-                }}>
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style={{
-                    background: `linear-gradient(135deg, ${o.color}, #0ea5e9)`,
-                    boxShadow: '0 6px 18px rgba(0,0,0,0.15)'
-                  }}>
-                    <MapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{o.city}</h3>
-                  <p className="text-sm text-muted-foreground">{o.address}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </main>
+      </div>
       <Footer />
     </div>
   );
